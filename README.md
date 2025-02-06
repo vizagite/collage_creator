@@ -1,3 +1,8 @@
+<head>
+  <meta property="og:title" content="Bookcovers collage creator">
+  <meta property="og:description" content="Works on all systems with python">
+</head>
+
 # Image Collage Creator
 
 ![my 2025 book collage](collage_output.jpg)
