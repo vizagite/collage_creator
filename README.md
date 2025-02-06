@@ -35,7 +35,7 @@ This Python script helps you create same beautiful collages from your images. It
 
    `python collage_gen.py` or `python collage_gen.py -c 7` to adjust columns
 
-   ### TIP: Rename the images as 01, 02, ... in order for deciding the order in final collage.
+   **TIP**: Rename the images as 01, 02, ... in order for deciding the order in final collage. Make sure to not disturb the file extensions part while renaming (file extensions are .jpg, .png, ...)
 
 5. **For more advanced usage pass other options**
     
