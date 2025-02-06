@@ -4,6 +4,7 @@ import os
 import subprocess
 import platform
 from pathlib import Path
+import re
 
 def install_package(package):
     """Install a Python package using pip."""
@@ -65,13 +66,9 @@ def validate_directory(dir_path):
 
 def get_supported_images(directory):
     """Get all supported image files in the directory."""
-    extensions = {'.jpg', '.jpeg', '.png', '.bmp', '.gif', '.webp'}
-    image_files = []
-    
-    for ext in extensions:
-        image_files.extend(list(directory.glob(f'*{ext}')))
-        image_files.extend(list(directory.glob(f'*{ext.upper()}')))
-    
+    pattern = re.compile(r'\.(jpg|jpeg|png|bmp|webp)$', re.IGNORECASE)
+    image_files = [file for file in directory.iterdir() if pattern.search(file.name)]
+
     return sorted(image_files)
 
 def create_collage(input_dir='.', output_file='books_collage.jpg', cols=5, 
