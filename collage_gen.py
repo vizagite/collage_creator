@@ -125,10 +125,15 @@ def create_collage(input_dir='.', output_file='books_collage.jpg', cols=5,
                 img.thumbnail((target_width, target_height), Image.Resampling.LANCZOS)
                 
                 if img.size != (target_width, target_height):
-                    left = (img.width - target_width) // 2 if img.width > target_width else 0
-                    top = (img.height - target_height) // 2 if img.height > target_height else 0
-                    right = left + target_width
-                    bottom = top + target_height
+                    ratio = max(target_width / img.width, target_height / img.height)
+                    new_width = int(img.width * ratio)
+                    new_height = int(img.height * ratio)
+                    img = img.resize((new_width, new_height), Image.Resampling.LANCZOS)
+
+                    left = (new_width - target_width) // 2
+                    top = (new_height - target_height) // 2
+                    right = (new_width + target_width) // 2
+                    bottom = (new_height + target_height) // 2
                     img = img.crop((left, top, right, bottom))
                                     
                 col = (i - 1) % cols
