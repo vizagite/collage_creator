@@ -6,6 +6,14 @@ import platform
 from pathlib import Path
 import re
 
+
+def natural_sort_key(s):
+    """
+    Key function for natural sorting.
+    Splits the string into parts, treating numbers as integers for sorting.
+    """
+    return [int(part) if part.isdigit() else part.lower() for part in re.split('([0-9]+)', s)]
+
 def install_package(package):
     """Install a Python package using pip."""
     try:
@@ -69,7 +77,7 @@ def get_supported_images(directory):
     pattern = re.compile(r'\.(jpg|jpeg|png|bmp|webp)$', re.IGNORECASE)
     image_files = [file for file in directory.iterdir() if pattern.search(file.name)]
 
-    return sorted(image_files)
+    return sorted(image_files, key=lambda x: natural_sort_key(x.name))
 
 def create_collage(input_dir='.', output_file='books_collage.jpg', cols=5, 
                   target_width=350, target_height=600, padding=10, bg_color='white'):
