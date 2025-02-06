@@ -35,6 +35,8 @@ This Python script helps you create same beautiful collages from your images. It
 
    `python collage_gen.py` or `python collage_gen.py -c 7` to adjust columns
 
+   ### TIP: Rename the images as 01, 02, ... in order for deciding the order in final collage.
+
 5. **For more advanced usage pass other options**
     
     `python collage_gen.py --columns 3 --input-dir "my_images" --output "my_collage.jpg" --width 400 --height 600 --padding 15 --background "black"`
